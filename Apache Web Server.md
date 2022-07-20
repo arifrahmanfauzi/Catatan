@@ -56,13 +56,35 @@ you can add `authorized_keys` into `/home/arif/.ssh` folder for add ssh key into
        CustomLog ${APACHE_LOG_DIR}/arif-access.log combined
    
    </VirtualHost>
-   
-   
-   
    ```
+
+```apacheconf
+#for laravel project
+<VirtualHost *:80>
+    ServerAdmin admin@example.com
+    ServerName laravel.dev
+    ServerAlias www.laravel.dev
+    DocumentRoot /home/user/projects/laravel_project/public
+     
+    <Directory /home/user/projects/laravel_project/public/>
+            Options Indexes FollowSymLinks MultiViews
+            AllowOverride All
+            Order allow,deny
+            allow from all
+            Require all granted
+    </Directory>
+     
+    LogLevel debug
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+</VirtualHost>
+```
 
 9. enable conf `sudo a2ensite arifrahman.conf`
 
 10. enable mod userdir `sudo a2enmod userdir`
 
 11. enable mod rewrite `sudo a2enmod rewrite`
+
+12. adding firewall `sudo ufw allow "Apache Full"`

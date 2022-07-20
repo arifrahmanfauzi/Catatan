@@ -1,4 +1,4 @@
-# Create Virtual Host in user dircetory
+# Create Virtual Host in user dirctory
 
 create user `sudo useradd -m exampleuser`
 
