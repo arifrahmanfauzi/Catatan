@@ -28,4 +28,41 @@ in this case we will put web in user directory, so we need to create user first.
 
 6. see list of member www-data group `grep ^www-data /etc/group`
 
+#### SSH tips
 
+you can add `authorized_keys` into `/home/arif/.ssh` folder for add ssh key into your user folder
+
+7. create directory `mkdir public_html`
+
+8. create a virtualhost conf file name it same of your domain in `/etc/apache2/sites-available` arifrahman.conf and here is example virtualhost config
+   
+   ```apacheconf
+   #arifrahman.conf
+   <VirtualHost *:80>
+   
+       ServerAdmin admin@domain.io
+       ServerName arifrahman.my.id #your domain
+       DocumentRoot /home/arif/public_html #your path project
+   
+       <Directory />
+               Options FollowSymLinks
+               AllowOverride None
+       </Directory>
+       <Directory /home/arif/public_html>
+               AllowOverride All
+       </Directory>
+   
+       ErrorLog ${APACHE_LOG_DIR}/arif-error.log
+       CustomLog ${APACHE_LOG_DIR}/arif-access.log combined
+   
+   </VirtualHost>
+   
+   
+   
+   ```
+
+9. enable conf `sudo a2ensite arifrahman.conf`
+
+10. enable mod userdir `sudo a2enmod userdir`
+
+11. enable mod rewrite `sudo a2enmod rewrite`
