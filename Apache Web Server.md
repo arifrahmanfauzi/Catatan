@@ -65,7 +65,7 @@ you can add `authorized_keys` into `/home/arif/.ssh` folder for add ssh key into
     ServerName laravel.dev
     ServerAlias www.laravel.dev
     DocumentRoot /home/user/projects/laravel_project/public
-     
+
     <Directory /home/user/projects/laravel_project/public/>
             Options Indexes FollowSymLinks MultiViews
             AllowOverride All
@@ -73,7 +73,7 @@ you can add `authorized_keys` into `/home/arif/.ssh` folder for add ssh key into
             allow from all
             Require all granted
     </Directory>
-     
+
     LogLevel debug
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
